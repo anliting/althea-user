@@ -4,6 +4,6 @@ let
     register=   require('./server/register')
 module.exports=althea=>{
     althea.addPagemodule('/edituser',edituser)
-    althea.addPagemodule('/user',edituser)
+    althea.addPagemodule('/user',user)
     althea.addPagemodule('u',user)
 }

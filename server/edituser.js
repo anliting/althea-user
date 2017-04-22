@@ -1,5 +1,3 @@
-let
-    page403=    require('./403')
 module.exports=env=>{
     if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
@@ -14,7 +12,7 @@ module.exports=env=>{
 async function get(env){
     let user=await env.database.getCurrentUserByRequest(env.request)
     if(!user.id)
-        return page403(env)
+        return 403
     env.headers['content-type']='text/html;charset=utf-8'
     return{
         status:200,
