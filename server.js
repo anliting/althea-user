@@ -4,6 +4,8 @@ let
     register=   require('./server/register')
 module.exports=althea=>{
     althea.addPagemodule('/edituser',edituser)
-    althea.addPagemodule('/user',user)
-    althea.addPagemodule('u',user)
+    althea.addPagemodule(env=>{
+        let path=env.analyze.request.parsedUrl.pathname.split('/')
+        return path[1]=='u'||path[1]=='user'
+    },user)
 }
