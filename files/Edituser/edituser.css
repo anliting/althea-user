@@ -1,0 +1,28 @@
+#div_main{
+    margin:32px auto 0;
+    max-width:600px;
+}
+#div_main input{
+    padding:4px;
+}
+#div_main td{
+    padding:16px;
+}
+#input_username{
+    width:120px;
+}
+#input_nickname{
+    width:120px;
+}
+#tr_password{
+    display:none;
+}
+#input_password{
+    width:120px;
+}
+#tr_confirmpassword{
+    display:none;
+}
+#input_confirmpassword{
+    width:120px;
+}

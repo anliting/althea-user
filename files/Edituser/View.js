@@ -1,0 +1,23 @@
+function View(){
+    this.form=
+        document.getElementById('form')
+    this.tr_password=document.getElementById('tr_password')
+    this.tr_confirmpassword=document.getElementById('tr_confirmpassword')
+    this.input_username=document.getElementById('input_username')
+    this.input_nickname=document.getElementById('input_nickname')
+    this.input_ischangepassword=
+        document.getElementById('input_ischangepassword')
+    this.input_password=document.getElementById('input_password')
+    this.input_confirmpassword=
+        document.getElementById('input_confirmpassword')
+    this.input_submit=document.getElementById('input_submit')
+    this.span_status_confirmpassword=
+        document.getElementById('span_status_confirmpassword')
+    this.span_status_username_availability=
+        document.getElementById('span_status_username_availability')
+    this.span_status_username_validity=
+        document.getElementById('span_status_username_validity')
+    this.span_status_nickname_validity=
+        document.getElementById('span_status_nickname_validity')
+}
+View

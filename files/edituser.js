@@ -6,7 +6,7 @@
             location='/'
         )
     )
-    module.repository.althea.Edituser.then(Edituser=>
+    module.shareImport('Edituser.js').then(Edituser=>
         document.head.appendChild(Edituser.style)
     )
     let order=await module.repository.althea.order
