@@ -6,12 +6,14 @@
             location='/'
         )
     )
-    module.shareImport('Edituser.js').then(Edituser=>
+    let Edituser=module.shareImport('Edituser.js')
+    ;(async()=>{
+        Edituser=await Edituser
         document.head.appendChild(Edituser.style)
-    )
+    })()
     let order=await module.repository.althea.order
     order([
-        createEdituserView(site),
+        createEdituserView(Edituser,site),
         createNavigationbarView(site),
     ],(a,b)=>
         document.body.insertBefore(a,b)
@@ -19,8 +21,8 @@
         document.body.appendChild(e)
     )
 })()
-async function createEdituserView(site){
-    let Edituser=await module.repository.althea.Edituser
+async function createEdituserView(Edituser,site){
+    Edituser=await Edituser
     let edituser=new Edituser(site)
     return edituser.view
 }
