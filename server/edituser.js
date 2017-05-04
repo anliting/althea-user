@@ -69,6 +69,6 @@ function calcContent(env){
 </table>
 </form>
 </div>
-${env.althea.loadModule(env.envVars,'edituser.js',null,1)}
+${env.althea.loadModule(env.envVars,'plugins/althea-user/edituser.js')}
     `
 }
