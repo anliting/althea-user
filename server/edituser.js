@@ -50,8 +50,10 @@ function calcContent(env){
         <span id=span_status_nickname_validity></span>
 <tr>
     <td colspan=2>
-        <input id=input_ischangepassword type=checkbox>
-        Change password
+        <label>
+            <input id=input_ischangepassword type=checkbox>
+            Change password
+        </label
     <td>
 <tr id=tr_password>
     <td>Password<br>

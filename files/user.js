@@ -1,5 +1,5 @@
-(async()=>{
-    (await module.importByPath('lib/general.js',{mode:1}))(module)
+;(async()=>{
+    ;(await module.importByPath('lib/general.js',{mode:1}))(module)
     let site=await module.repository.althea.site
     site.loadPlugins('user',v=>eval(v))
     let dom=await module.repository.althea.dom
