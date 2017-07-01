@@ -1,11 +1,10 @@
 let
     user=       require('./server/user'),
-    edituser=   require('./server/edituser'),
-    register=   require('./server/register')
+    edituser=   require('./server/edituser')
 module.exports=althea=>{
     althea.addPagemodule('/edituser',edituser)
     althea.addPagemodule(env=>{
-        let path=env.analyze.request.parsedUrl.pathname.split('/')
-        return path[1]=='u'||path[1]=='user'
+        let p=env.analyze.request.parsedUrl.pathname.split('/')[1]
+        return p=='user'||p=='u'
     },user)
 }

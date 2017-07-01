@@ -3,8 +3,11 @@ let
     url=            require('url'),
     register=       require('./register')
 module.exports=env=>{
-    if(url.parse(env.request.url).pathname=='/user')
-        return register(env)
+    {
+        let p=url.parse(env.request.url).pathname
+        if(p=='/user'||p=='/u')
+            return register(env)
+    }
     if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
     if(env.request.method=='GET')
