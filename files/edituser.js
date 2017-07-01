@@ -14,7 +14,6 @@
     let order=await module.repository.althea.order
     order([
         createEdituserView(Edituser,site),
-        createNavigationbarView(site),
     ],(a,b)=>
         document.body.insertBefore(a,b)
     ,e=>
@@ -25,10 +24,4 @@ async function createEdituserView(Edituser,site){
     Edituser=await Edituser
     let edituser=new Edituser(site)
     return edituser.view
-}
-async function createNavigationbarView(site){
-    let Navigationbar=await module.repository.althea.Navigationbar
-    let navigationbar=new Navigationbar(site)
-    await navigationbar.load
-    return navigationbar.view
 }
