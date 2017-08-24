@@ -29,8 +29,8 @@
         })
     }
     function ExplanationUi(){
-        this.node=dom('div',n=>
-            dom('button','Explain the user system.',{onclick(e){
+        this.node=dom.div(n=>
+            dom.button('Explain the user system.',{onclick(e){
                 n.removeChild(this)
                 n.innerHTML=`<div style=padding-left:32px>
 <p>

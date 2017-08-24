@@ -89,7 +89,7 @@
                 location='/'
             })
         })
-        return dom('div')
+        return dom.div()
         function checkPasswordValidity(){
             let valid=view.input_password.value==view.input_confirmpassword.value
             updater.updatePasswordValidity(

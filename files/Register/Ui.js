@@ -1,6 +1,5 @@
 (async()=>{
-    let[dom,createNode]=await Promise.all([
-        module.repository.althea.dom,
+    let[createNode]=await Promise.all([
         module.shareImport('Ui/createNode.js'),
     ])
     function Ui(){

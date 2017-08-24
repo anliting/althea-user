@@ -10,15 +10,15 @@ let style=module.style('register.css')
         location=''
     })
     dom=await dom
-    dom(document.head,await style,Register.style)
-    dom(document.body,
-        dom('div',{className:'main'},
-            dom('h1','Register'),
-            dom('p',`This web page explains the user system of this
+    dom.head(await style,Register.style)
+    dom.body(
+        dom.div({className:'main'},
+            dom.h1('Register'),
+            dom.p(`This web page explains the user system of this
                 website and provides a interface for registering.
             `),
             register.explanationUi,
-            dom('p',`The registering process starts here. Just input the
+            dom.p(`The registering process starts here. Just input the
                 username and password, and then submit.
             `),
             register.ui.node
