@@ -1,24 +1,25 @@
-(async()=>{
-    (await module.importByPath('lib/general.static.js',{mode:1}))(module)
-    let site=module.repository.althea.site
-    site.then(site=>
+;(async()=>{
+    ;(await module.importByPath('lib/general.static.js',{mode:1}))(module)
+    let sitePromise=module.repository.althea.site
+    let Edituser=module.shareImport('Edituser.js')
+    ;(async()=>{
+        let site=await sitePromise
         site.on('userChange',()=>
             location='/'
         )
-    )
-    let Edituser=module.shareImport('Edituser.js')
-    ;(async()=>{
-        Edituser=await Edituser
-        document.head.appendChild(Edituser.style)
     })()
-    let order=await module.repository.althea.order
-    order([
-        createEdituserView(Edituser,site),
-    ],(a,b)=>
-        document.body.insertBefore(a,b)
-    ,e=>
-        document.body.appendChild(e)
-    )
+    ;(async()=>{
+        let dom
+        [
+            dom,
+            Edituser,
+        ]=await Promise.all([
+            module.repository.althea.dom,
+            Edituser,
+        ])
+        dom.head(Edituser.style)
+        dom.body(await createEdituserView(Edituser,sitePromise))
+    })()
 })()
 async function createEdituserView(Edituser,site){
     Edituser=await Edituser
