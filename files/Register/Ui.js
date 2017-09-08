@@ -58,15 +58,16 @@
             if(isavailable_usernames[input_username.value]===undefined){
                 {
                     let username=input_username.value
-                    module.repository.althea.site.then(site=>
-                        site.send({
-                            function:'getUserByUsername',
-                            username,
-                        })
-                    ).then(id=>{
+                    ;(async()=>{
+                        let
+                            site=await module.repository.althea.site,
+                            id=await site.send({
+                                function:'getUserByUsername',
+                                username,
+                            })
                         isavailable_usernames[username]=id==undefined
                         isavailable_username(e)
-                    })
+                    })()
                 }
                 span_status_username_availability.innerHTML=
                     '<span style=color:blue>checking...</span>'
