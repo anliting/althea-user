@@ -2,15 +2,15 @@ function Checker(edituser,currentUser){
     this._edituser=edituser
     this._currentUser=currentUser
 }
-Checker.prototype.isAvailableUsername=function(s){
+Checker.prototype.isAvailableUsername=async function(s){
     if(s==this._currentUser.username)
-        return Promise.resolve(true)
-    return this._edituser._site.then(site=>
-        site.send({
-            function:'getUserByUsername',
-            username:s,
-        })
-    ).then(id=>id==undefined)
+        return true
+    this._edituser._site=await this._edituser._site
+    let id=await this._edituser._site.send({
+        function:'getUserByUsername',
+        username:s,
+    })
+    return id==undefined
 }
 Checker.prototype.isValidUsername=function(s){
     return /^[0-9a-z]{1,16}$/.test(s)

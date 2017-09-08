@@ -15,19 +15,18 @@
             edituser=this,
             checker,
             view=new View
-        this._site.then(site=>
-            site.currentUser
-        ).then(cu=>
-            cu.load(['username','nickname'])
-        ).then(currentUser=>{
-            checker=new Checker(this,currentUser)
-            view.input_username.value=currentUser.username
+        ;(async()=>{
+            this._site=await this._site
+            let cu=await this._site.currentUser
+            await cu.load(['username','nickname'])
+            checker=new Checker(this,cu)
+            view.input_username.value=cu.username
             view.input_username.removeAttribute('disabled')
-            view.input_nickname.value=currentUser.nickname
+            view.input_nickname.value=cu.nickname
             view.input_nickname.removeAttribute('disabled')
             view.input_submit.removeAttribute('disabled')
-        })
-        view.input_username.addEventListener('input',()=>{
+        })()
+        view.input_username.addEventListener('input',async()=>{
             let
                 s=input_username.value,
                 valid=checker.isValidUsername(s)
@@ -42,14 +41,13 @@
             )
             let sb=Symbol()
             this._lastUsernameAvailabilityChecking=sb
-            checker.isAvailableUsername(s).then(isAvailable=>{
-                if(this._lastUsernameAvailabilityChecking!=sb)
-                    return
-                updater.updateUsernameAvailability(
-                    view.span_status_username_availability,
-                    isAvailable?2:1
-                )
-            })
+            let isAvailable=await checker.isAvailableUsername(s)
+            if(this._lastUsernameAvailabilityChecking!=sb)
+                return
+            updater.updateUsernameAvailability(
+                view.span_status_username_availability,
+                isAvailable?2:1
+            )
         })
         view.input_nickname.addEventListener('input',()=>{
             updater.updateNicknameValidity(
@@ -71,7 +69,7 @@
                 :
                     'none'
         })
-        view.form.addEventListener('submit',e=>{
+        view.form.addEventListener('submit',async e=>{
             e.preventDefault()
             let data={
                 username:view.input_username.value,
@@ -79,15 +77,13 @@
             }
             if(view.input_ischangepassword.checked)
                 data.password=view.input_password.value
-            edituser._site.then(site=>
-                site.send({
-                    function:'updateUser',
-                    set:data,
-                })
-            ).then(res=>{
-                // to-do: recheck username if failed
-                location='/'
+            edituser._site=await edituser._site
+            let res=await edituser._site.send({
+                function:'updateUser',
+                set:data,
             })
+            // to-do: recheck username if failed
+            location='/'
         })
         return dom.div()
         function checkPasswordValidity(){

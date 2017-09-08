@@ -8,9 +8,10 @@
     ])
     function Edituser(site){
         this._site=site
-        this._site.then(site=>
-            site.loadPlugins('edituser',s=>eval(s))
-        )
+        ;(async()=>{
+            this._site=await this._site
+            this._site.loadPlugins('edituser',s=>eval(s))
+        })()
     }
     Object.defineProperty(Edituser.prototype,'view',view)
     Edituser.style=style
