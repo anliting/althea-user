@@ -1,7 +1,8 @@
 ;(async()=>{
     ;(await module.importByPath('lib/general.static.js',{mode:1}))(module)
-    let sitePromise=module.repository.althea.site
-    let Edituser=module.shareImport('Edituser.js')
+    let
+        sitePromise=module.repository.althea.site,
+        Edituser=module.shareImport('Edituser.js')
     ;(async()=>{
         let site=await sitePromise
         site.on('userChange',()=>
@@ -10,7 +11,7 @@
     })()
     ;(async()=>{
         let dom
-        [
+        ;[
             dom,
             Edituser,
         ]=await Promise.all([
