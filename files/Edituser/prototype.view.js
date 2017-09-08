@@ -1,4 +1,4 @@
-(async()=>{
+;(async()=>{
     let[
         dom,
         Checker,
@@ -11,10 +11,125 @@
         module.shareImport('View.js'),
     ])
     return{get(){
+        function checkPasswordValidity(){
+            let valid=
+                view.input_password.value==view.input_confirmpassword.value
+            updater.updatePasswordValidity(
+                view.span_status_confirmpassword,
+                valid?1:0
+            )
+        }
+        function checkSubmitAvalibality(){
+        }
+        function usernameTr(){
+            return dom.tr(
+                dom.td(
+                    'Username',
+                    dom.br(),
+                    view.input_username=dom.input({
+                        className:'username',
+                        disabled:true
+                    })
+                ),
+                dom.td(
+                    `
+                        This field is required. 
+                        Your username should be longer than 0 characters, 
+                        not longer than 16 characters, and only include 
+                        lowercase letters and numbers.
+                    `,
+                    dom.br(),
+                    view.span_status_username_validity=dom.span(),
+                    dom.br(),
+                    view.span_status_username_availability=dom.span(),
+                )
+            )
+        }
+        function nicknameTr(){
+            return dom.tr(
+                dom.td(
+                    'Nickname',
+                    dom.br(),
+                    view.input_nickname=dom.input({
+                        className:'nickname',
+                        disabled:true
+                    })
+                ),
+                dom.td(
+                    `
+                        This field is optional, leave it blank if you do
+                        not want to provide it.
+                        Your nickname should be longer than 0 characters,
+                        shorter than 16 characters.
+                    `,
+                    dom.br(),
+                    view.span_status_nickname_validity=dom.span(),
+                )
+            )
+        }
+        function changePasswordTr(){
+            return dom.tr(
+                dom.td({colSpan:2},
+                    dom.label(
+                        view.input_ischangepassword=
+                            dom.input({type:'checkbox'}),
+                        ' Change password'
+                    )
+                ),
+            )
+        }
+        function passwordTr(){
+            return dom.tr({className:'password'},
+                dom.td(
+                    'Password',
+                    dom.br(),
+                    view.input_password=dom.input({
+                        className:'password',
+                        type:'password'
+                    })
+                ),
+                dom.td()
+            )
+        }
+        function confirmPasswordTr(){
+            return dom.tr({className:'confirmpassword'},
+                dom.td(
+                    'Confirm password',
+                    dom.br(),
+                    view.input_confirmpassword=dom.input({
+                        className:'password',
+                        type:'password',
+                    })
+                ),
+                dom.td(
+                    view.span_status_confirmpassword=dom.span(),
+                )
+            )
+        }
+        function submitTr(){
+            return dom.tr(
+                dom.td({colSpan:2},
+                    view.input_submit=dom.input('Submit',{type:'submit'})
+                ),
+            )
+        }
         let
             edituser=this,
             checker,
-            view=new View
+            view=new View,
+            node=dom.div({className:'edituser'},
+                dom.h1('Edit User'),
+                view.form=dom.form(
+                    dom.table(
+                        usernameTr(),
+                        nicknameTr(),
+                        changePasswordTr(),
+                        view.tr_password=passwordTr(),
+                        view.tr_confirmpassword=confirmPasswordTr(),
+                        submitTr(),
+                    )
+                )
+            )
         ;(async()=>{
             this._site=await this._site
             let cu=await this._site.currentUser
@@ -28,7 +143,7 @@
         })()
         view.input_username.addEventListener('input',async()=>{
             let
-                s=input_username.value,
+                s=view.input_username.value,
                 valid=checker.isValidUsername(s)
             updater.updateUsernameVadility(
                 view.span_status_username_validity,s.length,valid?1:0
@@ -85,15 +200,6 @@
             // to-do: recheck username if failed
             location='/'
         })
-        return dom.div()
-        function checkPasswordValidity(){
-            let valid=view.input_password.value==view.input_confirmpassword.value
-            updater.updatePasswordValidity(
-                view.span_status_confirmpassword,
-                valid?1:0
-            )
-        }
-        function checkSubmitAvalibality(){
-        }
+        return node
     }}
 })()

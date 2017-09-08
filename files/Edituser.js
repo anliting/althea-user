@@ -1,4 +1,4 @@
-(async()=>{
+;(async()=>{
     let[
         view,
         style,

@@ -26,51 +26,7 @@ function calcContent(env){
 <title>Edit User</title>
 <base href=/>
 <meta name=viewport content='width=device-width,initial-scale=1'>
-<div id=div_main>
-<h1>Edit User</h1>
-<form id=form>
-<table>
-<tr>
-    <td>Username<br>
-        <input id=input_username disabled>
-    <td>
-        This field is required. 
-        Your username should be longer than 0 characters, 
-        not longer than 16 characters, and only include 
-        lowercase letters and numbers.<br>
-        <span id=span_status_username_validity></span><br>
-        <span id=span_status_username_availability></span>
-<tr>
-    <td>Nickname<br>
-        <input id=input_nickname disabled>
-    <td>
-        This field is optional, leave it blank if you do not want to provide it. 
-        Your nickname should be longer than 0 characters, 
-        shorter than 16 characters.<br>
-        <span id=span_status_nickname_validity></span>
-<tr>
-    <td colspan=2>
-        <label>
-            <input id=input_ischangepassword type=checkbox>
-            Change password
-        </label
-    <td>
-<tr id=tr_password>
-    <td>Password<br>
-        <input id=input_password type=password>
-    <td>
-<tr id=tr_confirmpassword>
-    <td>Confirm password<br>
-        <input id=input_confirmpassword type=password>
-    <td>
-        <span id=span_status_confirmpassword></span>
-<tr>
-    <td><input id=input_submit type=submit
-        value=Submit disabled><br>
-    <td>
-</table>
-</form>
-</div>
+<body>
 ${env.althea.loadModule(env.envVars,'plugins/althea-user/edituser.js')}
     `
 }

@@ -1,28 +1,28 @@
-#div_main{
+.edituser{
     margin:32px auto 0;
     max-width:600px;
 }
-#div_main input{
+.edituser input{
     padding:4px;
 }
-#div_main td{
+.edituser td{
     padding:16px;
 }
-#input_username{
+.edituser input.username{
     width:120px;
 }
-#input_nickname{
+.edituser input.nickname{
     width:120px;
 }
-#tr_password{
+.edituser tr.password{
     display:none;
 }
-#input_password{
+.edituser input.password{
     width:120px;
 }
-#tr_confirmpassword{
+.edituser tr.confirmpassword{
     display:none;
 }
-#input_confirmpassword{
+.edituser input.confirmpassword{
     width:120px;
 }
