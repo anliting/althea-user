@@ -1,6 +1,6 @@
 let style=module.style('register.css')
 ;(async()=>{
-    (await module.importByPath('lib/general.static.js',{mode:1}))(module)
+    (await module.importByPath('lib/general.js',{mode:1}))(module)
     let dom=module.repository.althea.dom
     let Register=await module.shareImport('Register.js')
     let register=new Register(module.repository.althea.site)

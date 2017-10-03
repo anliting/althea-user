@@ -1,5 +1,5 @@
 ;(async()=>{
-    ;(await module.importByPath('lib/general.static.js',{mode:1}))(module)
+    ;(await module.importByPath('lib/general.js',{mode:1}))(module)
     let
         sitePromise=module.repository.althea.site,
         Edituser=module.shareImport('Edituser.js')
