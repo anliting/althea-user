@@ -1,38 +1,31 @@
-(async()=>{
-    let[
-        EventEmmiter,
-        dom,
-        Ui,
-        style,
-    ]=await Promise.all([
-        module.repository.althea.EventEmmiter,
-        module.repository.althea.dom,
-        module.shareImport('Register/Ui.js'),
-        module.style('Register/register.css'),
-    ])
-    function Register(site){
-        EventEmmiter.call(this)
-        this._site=site
-    }
-    Object.setPrototypeOf(Register.prototype,EventEmmiter.prototype)
-    Register.prototype._register=async function(username,password){
-        let r=await(await this._site).send({
-            function:'newUser',
-            username,
-            password,
-        })
-        if(r!=0)
-            throw Error()
-        return this.emit('register',{
-            username,
-            password
-        })
-    }
-    function ExplanationUi(){
-        this.node=dom.div(n=>
-            dom.button('Explain the user system.',{onclick(e){
-                n.removeChild(this)
-                n.innerHTML=`<div style=padding-left:32px>
+import EventEmmiter from 'https://gitcdn.link/cdn/anliting/simple.js/99b7ab1b872bc2da746dd648dd0c078b3bc6961e/src/simple/EventEmmiter.js'
+import core from '/lib/core.static.js'
+let{dom}=core
+import Ui from './Register/Ui.js'
+import style from './Register/style.js'
+function Register(site){
+    EventEmmiter.call(this)
+    this._site=site
+}
+Object.setPrototypeOf(Register.prototype,EventEmmiter.prototype)
+Register.prototype._register=async function(username,password){
+    let r=await(await this._site).send({
+        function:'newUser',
+        username,
+        password,
+    })
+    if(r!=0)
+        throw Error()
+    return this.emit('register',{
+        username,
+        password
+    })
+}
+function ExplanationUi(){
+    this.node=dom.div(n=>
+        dom.button('Explain the user system.',{onclick(e){
+            n.removeChild(this)
+            n.innerHTML=`<div style=padding-left:32px>
 <p>
 Each user of this website has a username and a password:
 <p>
@@ -46,19 +39,18 @@ The password is a character string, which is the secret information that you mus
 </ul>
 </div>
 `
-            }})
-        )
-    }
-    Object.defineProperty(Register.prototype,'explanationUi',{get(){
-        return(new ExplanationUi).node
-    }})
-    Object.defineProperty(Register.prototype,'ui',{get(){
-        if(this._ui)
-            return this._ui
-        let ui=new Ui
-        ui.register=(u,p)=>this._register(u,p)
-        return this._ui=ui
-    }})
-    Register.style=style
-    return Register
-})()
+        }})
+    )
+}
+Object.defineProperty(Register.prototype,'explanationUi',{get(){
+    return(new ExplanationUi).node
+}})
+Object.defineProperty(Register.prototype,'ui',{get(){
+    if(this._ui)
+        return this._ui
+    let ui=new Ui
+    ui.register=(u,p)=>this._register(u,p)
+    return this._ui=ui
+}})
+Register.style=dom.style(style)
+export default Register

@@ -20,7 +20,13 @@ function get(env){
 <base href=${env.config.root}>
 <meta name=viewport content='width=device-width,initial-scale=1'>
 <body>
-${env.althea.loadModule(env.envVars,'plugins/althea-user/register.js')}
+${env.althea.loadModule(
+    env.envVars,
+    'plugins/althea-user/register.js',
+    null,{
+        esm:1,
+    }
+)}
         `
     }
 }

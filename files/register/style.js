@@ -1,4 +1,4 @@
-div.main{
+export default`div.main{
     margin:0 auto;
     width:600px;
     max-width:100%;
@@ -24,3 +24,4 @@ div.main>p{
         padding-left:8px;
     }
 }
+`
