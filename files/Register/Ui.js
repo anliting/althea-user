@@ -1,5 +1,6 @@
 import createNode from './Ui/createNode.js'
-function Ui(){
+function Ui(site){
+    this._site=site
     this.node=createNode.call(this)
     let
         isavailable_usernames=[],
@@ -32,7 +33,7 @@ function Ui(){
         ))
             return
         let
-            username=input_username.value
+            username=input_username.value,
             password=input_password.value
         this.register(
             input_username.value,
@@ -57,8 +58,7 @@ function Ui(){
                 let username=input_username.value
                 ;(async()=>{
                     let
-                        site=await module.repository.althea.site,
-                        id=await site.send({
+                        id=await(await site).send({
                             function:'getUserByUsername',
                             username,
                         })

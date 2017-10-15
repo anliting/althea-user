@@ -48,7 +48,7 @@ Object.defineProperty(Register.prototype,'explanationUi',{get(){
 Object.defineProperty(Register.prototype,'ui',{get(){
     if(this._ui)
         return this._ui
-    let ui=new Ui
+    let ui=new Ui(this._site)
     ui.register=(u,p)=>this._register(u,p)
     return this._ui=ui
 }})
