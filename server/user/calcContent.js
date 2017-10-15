@@ -6,7 +6,12 @@ async function calcContent(env,userId){
 <base href=${env.config.root}>
 <meta name=viewport content='width=device-width,initial-scale=1'>
 <body>
-${env.althea.loadModule(env.envVars,'plugins/althea-user/user.js',userId?userId:'null')}
+${env.althea.loadModule(
+    env.envVars,
+    'plugins/althea-user/user.js',
+    userId||'null',
+    {esm:1}
+)}
 `
     return content
 }

@@ -1,4 +1,4 @@
-import createNode from './Ui/createNode.js'
+import createNode from'./Ui/createNode.js'
 function Ui(site){
     this._site=site
     this.node=createNode.call(this)

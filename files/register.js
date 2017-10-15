@@ -1,8 +1,7 @@
-import core from '/lib/core.static.js'
-import style from './register/style.js'
-import Register from './Register.js'
+import{Site,dom}from'/lib/core.static.js'
+import style from'./register/style.js'
+import Register from'./Register.js'
 let
-    {Site,dom}=core,
     site=new Site,
     register=new Register(Promise.resolve(site))
 register.on('register',async e=>{
