@@ -1,3 +1,2 @@
-function View(){
+export default function View(){
 }
-View

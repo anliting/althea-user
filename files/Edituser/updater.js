@@ -1,4 +1,4 @@
-({
+export default{
     updateUsernameVadility(span,length,status){
         let message=[
             '<span style=color:red>invalid</span>.',
@@ -35,4 +35,4 @@
         ]
         span.innerHTML=message[status]
     }
-})
+}

@@ -9,8 +9,7 @@ async function calcContent(env,userId){
 ${env.althea.loadModule(
     env.envVars,
     'plugins/althea-user/user.js',
-    userId||'null',
-    {esm:1}
+    userId||'null'
 )}
 `
     return content

@@ -22,10 +22,7 @@ function get(env){
 <body>
 ${env.althea.loadModule(
     env.envVars,
-    'plugins/althea-user/register.js',
-    null,{
-        esm:1,
-    }
+    'plugins/althea-user/register.js'
 )}
         `
     }

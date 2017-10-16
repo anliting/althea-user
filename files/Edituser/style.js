@@ -1,4 +1,4 @@
-.edituser{
+export default`.edituser{
     margin:32px auto 0;
     max-width:600px;
 }
@@ -26,3 +26,4 @@
 .edituser input.confirmpassword{
     width:120px;
 }
+`

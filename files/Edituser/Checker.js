@@ -18,4 +18,4 @@ Checker.prototype.isValidUsername=function(s){
 Checker.prototype.isValidNickname=function(s){
     return /^.{0,16}$/.test(s)
 }
-Checker
+export default Checker
