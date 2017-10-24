@@ -5,7 +5,7 @@ function Edituser(site){
     this._site=site
     ;(async()=>{
         this._site=await this._site
-        this._site.loadPlugins('edituser',s=>eval(s))
+        this._site.loadPlugins0('edituser',this)
     })()
 }
 Object.defineProperty(Edituser.prototype,'view',view)

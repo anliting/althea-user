@@ -10,7 +10,7 @@ async function createMain(cu,u){
 }
 ;(async()=>{
     let module=await moduleLoader()
-    site.loadPlugins('user',v=>eval(v))
+    site.loadPlugins0('user',this)
     dom.body(await createMain(
         site.currentUser,
         site.getUser(arg)
