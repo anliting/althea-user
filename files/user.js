@@ -1,4 +1,4 @@
-import{Site,dom,general,moduleLoader}from'/lib/core.static.js'
+import{Site,dom,general,load}from'/lib/core.static.js'
 let site=new Site
 general()
 async function createMain(cu,u){
@@ -9,7 +9,7 @@ async function createMain(cu,u){
     )
 }
 ;(async()=>{
-    let module=await moduleLoader()
+    let module=await load.module()
     site.loadPlugins0('user',this)
     dom.body(await createMain(
         site.currentUser,
