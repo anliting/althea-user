@@ -1,6 +1,5 @@
-import EventEmmiter from 'https://gitcdn.link/cdn/anliting/simple.js/eae977ecf2a856ecb072259aa63b003d186ba618/src/simple/EventEmmiter.js'
-import core from '/lib/core.static.js'
-let{dom}=core
+import{EventEmmiter}from 'https://gitcdn.link/cdn/anliting/simple.js/3b5e122ded93bb9a5a7d5099ac645f1e1614a89b/src/simple.static.js'
+import{dom}from '/lib/core.static.js'
 import Ui from './Register/Ui.js'
 import style from './Register/style.js'
 function Register(site){
