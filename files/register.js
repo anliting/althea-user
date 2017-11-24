@@ -3,7 +3,7 @@ import style from'./register/style.js'
 import Register from'./Register.js'
 let
     site=new Site,
-    register=new Register(Promise.resolve(site))
+    register=new Register(site)
 register.on('register',async e=>{
     await site.login(e.username,e.password)
     location=''

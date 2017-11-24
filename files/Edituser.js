@@ -3,10 +3,7 @@ import view from './Edituser/prototype.view.js'
 import style from './Edituser/style.js'
 function Edituser(site){
     this._site=site
-    ;(async()=>{
-        this._site=await this._site
-        this._site.loadPlugins0('edituser',this)
-    })()
+    this._site.loadPlugins0('edituser',this)
 }
 Object.defineProperty(Edituser.prototype,'view',view)
 Edituser.style=dom.style(style)

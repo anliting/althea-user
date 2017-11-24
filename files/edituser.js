@@ -1,10 +1,8 @@
 import{Site,dom,general}from'/lib/core.static.js'
 import Edituser from'./Edituser.js'
 let site=new Site
-async function createEdituserView(Edituser,site){
-    Edituser=await Edituser
-    let edituser=new Edituser(site)
-    return edituser.view
+async function createEdituserView(){
+    return(new Edituser(site)).view
 }
 general()
 site.on('userChange',()=>
@@ -12,5 +10,5 @@ site.on('userChange',()=>
 )
 ;(async()=>{
     dom.head(Edituser.style)
-    dom.body(await createEdituserView(Edituser,Promise.resolve(site)))
+    dom.body(await createEdituserView())
 })()

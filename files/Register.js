@@ -8,7 +8,7 @@ function Register(site){
 }
 Object.setPrototypeOf(Register.prototype,EventEmmiter.prototype)
 Register.prototype._register=async function(username,password){
-    let r=await(await this._site).send({
+    let r=await this._site.send({
         function:'newUser',
         username,
         password,

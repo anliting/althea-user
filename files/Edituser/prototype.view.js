@@ -123,7 +123,6 @@ export default{get(){
             )
         )
     ;(async()=>{
-        this._site=await this._site
         let cu=await this._site.currentUser
         await cu.load(['username','nickname'])
         checker=new Checker(this,cu)
@@ -159,6 +158,7 @@ export default{get(){
     view.input_nickname.addEventListener('input',()=>{
         updater.updateNicknameValidity(
             view.span_status_nickname_validity,
+            view.input_nickname.value.length,
             checker.isValidNickname(view.input_nickname.value)?1:0
         )
     })
@@ -184,7 +184,6 @@ export default{get(){
         }
         if(view.input_ischangepassword.checked)
             data.password=view.input_password.value
-        edituser._site=await edituser._site
         let res=await edituser._site.send({
             function:'updateUser',
             set:data,

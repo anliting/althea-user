@@ -1,6 +1,5 @@
 import createNode from'./Ui/createNode.js'
 function Ui(site){
-    this._site=site
     this.node=createNode.call(this)
     let
         isavailable_usernames=[],
@@ -58,7 +57,7 @@ function Ui(site){
                 let username=input_username.value
                 ;(async()=>{
                     let
-                        id=await(await site).send({
+                        id=await site.send({
                             function:'getUserByUsername',
                             username,
                         })

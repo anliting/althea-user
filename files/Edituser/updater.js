@@ -17,13 +17,13 @@ export default{
         span.innerHTML=
             message[status]
     },
-    updateNicknameValidity(span,status){
+    updateNicknameValidity(span,length,status){
         let message=[
             '<span style=color:red>invalid</span>.',
             '<span style=color:green>valid</span>.',
         ]
         span.innerHTML=`
-            ${input_nickname.value.length} characters, ${
+            ${length} characters, ${
                 message[status]
             }
         `
