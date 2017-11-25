@@ -28,7 +28,7 @@ function calcContent(env){
 <meta name=viewport content='width=device-width,initial-scale=1'>
 <body>
 ${env.althea.loadModule(
-    'plugins/user/edituser.js',
+    'plugins/user/edituser.static.js',
 )}
     `
 }
