@@ -1,4 +1,4 @@
-import { Site, dom } from '/lib/core.static.js';
+import { dom, Site } from '/lib/core.static.js';
 import { EventEmmiter } from 'https://gitcdn.link/cdn/anliting/simple.js/3b5e122ded93bb9a5a7d5099ac645f1e1614a89b/src/simple.static.js';
 
 var style = `div.main{
@@ -27,7 +27,7 @@ div.main>p{
         padding-left:8px;
     }
 }
-`;
+`
 
 function createNode(){
     return dom.div({className:'register'},
@@ -124,7 +124,8 @@ function Ui(site){
     function isavailable_username(e){
         if(isavailable_usernames[input_username.value]===undefined){
             {
-                let username=input_username.value;(async()=>{
+                let username=input_username.value
+                ;(async()=>{
                     let
                         id=await site.send({
                             function:'getUserByUsername',
@@ -160,7 +161,7 @@ function Ui(site){
 var style$1 = `div.register input{
     width:160px;
 }
-`;
+`
 
 function Register(site){
     EventEmmiter.call(this);
@@ -213,8 +214,9 @@ Object.defineProperty(Register.prototype,'ui',{get(){
 }});
 Register.style=dom.style(style$1);
 
-let site=new Site;
-let register=new Register(site);
+let
+    site=new Site,
+    register=new Register(site);
 register.on('register',async e=>{
     await site.login(e.username,e.password);
     location='';

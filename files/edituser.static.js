@@ -1,4 +1,4 @@
-import { Site, dom, general } from '/lib/core.static.js';
+import { dom, Site, general } from '/lib/core.static.js';
 
 function Checker(edituser,currentUser){
     this._edituser=edituser;
@@ -57,7 +57,7 @@ var updater = {
         ];
         span.innerHTML=message[status];
     }
-};
+}
 
 function View(){
 }
@@ -179,7 +179,8 @@ var view = {get(){
                     submitTr(),
                 )
             )
-        );(async()=>{
+        )
+    ;(async()=>{
         let cu=await this._site.currentUser;
         await cu.load(['username','nickname']);
         checker=new Checker(this,cu);
@@ -249,7 +250,7 @@ var view = {get(){
         location='/';
     });
     return node
-}};
+}}
 
 var style = `.edituser{
     margin:32px auto 0;
@@ -279,7 +280,7 @@ var style = `.edituser{
 .edituser input.confirmpassword{
     width:120px;
 }
-`;
+`
 
 function Edituser(site){
     this._site=site;
