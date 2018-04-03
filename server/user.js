@@ -1,47 +1,69 @@
 let
     calcContent=    require('./user/calcContent'),
-    url=            require('url'),
     register=       require('./register')
-module.exports=env=>{
-    {
-        let p=url.parse(env.request.url).pathname
-        if(p=='/user'||p=='/u')
-            return register(env)
+async function calcUserId(env){
+    let username=env.analyze.request.parsedUrl.pathname.split('/')[2]
+    if(username!=undefined)
+        try{
+            return await env.database.getUserIdByUsername(username)
+        }catch(e){
+            if(e.errno==1)
+                throw'userNotFound'
+            throw e
+        }
+}
+async function userPage(env,userId){
+    if(env.request.method!='GET'){
+        env.headers.allow='GET'
+        return{
+            status:405,
+            headers:env.headers,
+        }
     }
     if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
-    if(env.request.method=='GET')
-        return get(env)
-    env.headers.allow='GET'
-    return{
-        status:405,
-        headers:env.headers,
-    }
-}
-async function get(env){
     env.headers['content-type']='text/html;charset=utf-8'
-    let userId
-    try{
-        userId=await(calcUserId(env))
-    }catch(e){
-        if(e=='userNotFound')
-            return 400
-        throw e
-    }
     return{
         status:200,
         headers:env.headers,
         content:await calcContent(env,userId),
     }
 }
-async function calcUserId(env){
-    let username=url.parse(env.request.url).pathname.split('/')[2]
-    if(username!=undefined)
-        try{
-            return await env.database.getUserIdByUsername(username)
-        }catch(e){
-            if(e.errno==1)
-                throw 'userNotFound'
-            throw e
+async function userPermissionPage(env,userId){
+    if(env.request.method!='GET'){
+        env.headers.allow='GET'
+        return{
+            status:405,
+            headers:env.headers,
         }
+    }
+    if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
+        return 403
+    env.headers['content-type']='text/html;charset=utf-8'
+    return{
+        status:200,
+        headers:env.headers,
+        content:`<!doctype html><title>User Permission</title>`
+    }
+}
+module.exports=async env=>{
+    {
+        let p=env.analyze.request.parsedUrl.pathname
+        if(p=='/user'||p=='/u')
+            return register(env)
+    }
+    let userId
+    try{
+        userId=await calcUserId(env)
+    }catch(e){
+        if(e=='userNotFound')
+            return 400
+        throw e
+    }
+    let splitted=env.analyze.request.parsedUrl.pathname.split('/')
+    if(splitted.length==3)
+        return userPage(env,userId)
+    else if(splitted.length==4&&splitted[3]=='permission')
+        return userPermissionPage(env,userId)
+    return 404
 }
