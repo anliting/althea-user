@@ -1,7 +1,6 @@
-let
-    user=       require('./server/user'),
-    edituser=   require('./server/edituser')
-module.exports=althea=>{
+import user from './server/user'
+import edituser from './server/edituser'
+export default althea=>{
     althea.addPagemodule('/edituser',edituser)
     althea.addPagemodule(env=>{
         let p=env.analyze.request.parsedUrl.pathname.split('/')[1]

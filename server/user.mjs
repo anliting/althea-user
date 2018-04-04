@@ -1,6 +1,5 @@
-let
-    calcContent=    require('./user/calcContent'),
-    register=       require('./register')
+import calcContent from './user/calcContent'
+import register from './register'
 async function calcUserId(env){
     let username=env.analyze.request.parsedUrl.pathname.split('/')[2]
     if(username!=undefined)
@@ -46,7 +45,7 @@ async function userPermissionPage(env,userId){
         content:`<!doctype html><title>User Permission</title>`
     }
 }
-module.exports=async env=>{
+export default async env=>{
     {
         let p=env.analyze.request.parsedUrl.pathname
         if(p=='/user'||p=='/u')

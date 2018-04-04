@@ -1,4 +1,3 @@
-module.exports=calcContent
 async function calcContent(env,userId){
     let content=`
 <!doctype html>
@@ -13,3 +12,4 @@ ${env.althea.loadModule(
 `
     return content
 }
+export default calcContent
