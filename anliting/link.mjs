@@ -1,5 +1,5 @@
+import rollup from 'rollup'
 let
-    rollup=require('rollup'),
     skip=[
         '/lib/core.static.js',
         'https://gitcdn.link/cdn/anliting/simple.js/3b5e122ded93bb9a5a7d5099ac645f1e1614a89b/src/simple.static.js',
