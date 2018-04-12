@@ -42,7 +42,11 @@ async function userPermissionPage(env,userId){
     return{
         status:200,
         headers:env.headers,
-        content:`<!doctype html><title>User Permission</title>`
+        content:`
+            <!doctype html>
+            <title>Permission</title>
+            <script type=module src=/plugins/user/permission.js></script>
+        `,
     }
 }
 export default async env=>{
