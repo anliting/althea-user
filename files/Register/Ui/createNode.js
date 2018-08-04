@@ -1,41 +1,41 @@
-import{dom}from '/lib/core.static.js'
+import{doe}from '/lib/core.static.js'
 function createNode(){
-    return dom.div({className:'register'},
-        dom.div({className:'block'},
-            dom.div({className:'formFirst'},
-                dom.p(
+    return doe.div({className:'register'},
+        doe.div({className:'block'},
+            doe.div({className:'formFirst'},
+                doe.p(
                     'Username: ',
-                    this._input_username=dom.input()
+                    this._input_username=doe.input()
                 )
             ),
-            dom.div({className:'formSecond'},
-                this._span_status_username_validity=dom.span(),
-                dom.br(),
-                this._span_status_username_availability=dom.span()
+            doe.div({className:'formSecond'},
+                this._span_status_username_validity=doe.span(),
+                doe.br(),
+                this._span_status_username_availability=doe.span()
             )
         ),
-        dom.div({className:'block'},
-            dom.div({className:'formFirst'},
-                dom.p(
+        doe.div({className:'block'},
+            doe.div({className:'formFirst'},
+                doe.p(
                     'Password: ',
-                    this._input_password=dom.input({type:'password'})
+                    this._input_password=doe.input({type:'password'})
                 )
             ),
-            dom.div({className:'formSecond'})
+            doe.div({className:'formSecond'})
         ),
-        dom.div({className:'block'},
-            dom.div({className:'formFirst'},
-                dom.p(
+        doe.div({className:'block'},
+            doe.div({className:'formFirst'},
+                doe.p(
                     'Confirm password: ',
                     this._input_confirmpassword=
-                        dom.input({type:'password'})
+                        doe.input({type:'password'})
                 )
             ),
-            dom.div({className:'formSecond'},
-                this._span_status_confirmpassword=dom.span()
+            doe.div({className:'formSecond'},
+                this._span_status_confirmpassword=doe.span()
             )
         ),
-        this._submitButton=dom.button('Submit')
+        this._submitButton=doe.button('Submit')
     )
 }
 export default createNode

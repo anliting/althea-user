@@ -1,4 +1,4 @@
-import { dom, Site } from '/lib/core.static.js';
+import { doe, Site } from '/lib/core.static.js';
 import { EventEmmiter } from 'https://gitcdn.link/cdn/anliting/simple.js/3b5e122ded93bb9a5a7d5099ac645f1e1614a89b/src/simple.static.js';
 
 var style = `div.main{
@@ -30,42 +30,42 @@ div.main>p{
 `
 
 function createNode(){
-    return dom.div({className:'register'},
-        dom.div({className:'block'},
-            dom.div({className:'formFirst'},
-                dom.p(
+    return doe.div({className:'register'},
+        doe.div({className:'block'},
+            doe.div({className:'formFirst'},
+                doe.p(
                     'Username: ',
-                    this._input_username=dom.input()
+                    this._input_username=doe.input()
                 )
             ),
-            dom.div({className:'formSecond'},
-                this._span_status_username_validity=dom.span(),
-                dom.br(),
-                this._span_status_username_availability=dom.span()
+            doe.div({className:'formSecond'},
+                this._span_status_username_validity=doe.span(),
+                doe.br(),
+                this._span_status_username_availability=doe.span()
             )
         ),
-        dom.div({className:'block'},
-            dom.div({className:'formFirst'},
-                dom.p(
+        doe.div({className:'block'},
+            doe.div({className:'formFirst'},
+                doe.p(
                     'Password: ',
-                    this._input_password=dom.input({type:'password'})
+                    this._input_password=doe.input({type:'password'})
                 )
             ),
-            dom.div({className:'formSecond'})
+            doe.div({className:'formSecond'})
         ),
-        dom.div({className:'block'},
-            dom.div({className:'formFirst'},
-                dom.p(
+        doe.div({className:'block'},
+            doe.div({className:'formFirst'},
+                doe.p(
                     'Confirm password: ',
                     this._input_confirmpassword=
-                        dom.input({type:'password'})
+                        doe.input({type:'password'})
                 )
             ),
-            dom.div({className:'formSecond'},
-                this._span_status_confirmpassword=dom.span()
+            doe.div({className:'formSecond'},
+                this._span_status_confirmpassword=doe.span()
             )
         ),
-        this._submitButton=dom.button('Submit')
+        this._submitButton=doe.button('Submit')
     )
 }
 
@@ -182,8 +182,8 @@ Register.prototype._register=async function(username,password){
     })
 };
 function ExplanationUi(){
-    this.node=dom.div(n=>
-        dom.button('Explain the user system.',{onclick(e){
+    this.node=doe.div(n=>
+        doe.button('Explain the user system.',{onclick(e){
             n.removeChild(this);
             n.innerHTML=`<div style=padding-left:32px>
 <p>
@@ -212,7 +212,7 @@ Object.defineProperty(Register.prototype,'ui',{get(){
     ui.register=(u,p)=>this._register(u,p);
     return this._ui=ui
 }});
-Register.style=dom.style(style$1);
+Register.style=doe.style(style$1);
 
 let
     site=new Site,
@@ -221,18 +221,18 @@ register.on('register',async e=>{
     await site.login(e.username,e.password);
     location='';
 });
-dom.head(
-    dom.style(style),
+doe.head(
+    doe.style(style),
     Register.style
 );
-dom.body(
-    dom.div({className:'main'},
-        dom.h1('Register'),
-        dom.p(`This web page explains the user system of this
+doe.body(
+    doe.div({className:'main'},
+        doe.h1('Register'),
+        doe.p(`This web page explains the user system of this
             website and provides a interface for registering.
         `),
         register.explanationUi,
-        dom.p(`The registering process starts here. Just input the
+        doe.p(`The registering process starts here. Just input the
             username and password, and then submit.
         `),
         register.ui.node

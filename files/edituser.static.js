@@ -1,4 +1,4 @@
-import { dom, Site, general } from '/lib/core.static.js';
+import { doe, Site, general } from '/lib/core.static.js';
 
 function Checker(edituser,currentUser){
     this._edituser=edituser;
@@ -72,94 +72,94 @@ var view = {get(){
         );
     }
     function usernameTr(){
-        return dom.tr(
-            dom.td(
+        return doe.tr(
+            doe.td(
                 'Username',
-                dom.br(),
-                view.input_username=dom.input({
+                doe.br(),
+                view.input_username=doe.input({
                     className:'username',
                     disabled:true
                 })
             ),
-            dom.td(
+            doe.td(
                 `
                     This field is required. 
                     Your username should be longer than 0 characters, 
                     not longer than 16 characters, and only include 
                     lowercase letters and numbers.
                 `,
-                dom.br(),
-                view.span_status_username_validity=dom.span(),
-                dom.br(),
-                view.span_status_username_availability=dom.span(),
+                doe.br(),
+                view.span_status_username_validity=doe.span(),
+                doe.br(),
+                view.span_status_username_availability=doe.span(),
             )
         )
     }
     function nicknameTr(){
-        return dom.tr(
-            dom.td(
+        return doe.tr(
+            doe.td(
                 'Nickname',
-                dom.br(),
-                view.input_nickname=dom.input({
+                doe.br(),
+                view.input_nickname=doe.input({
                     className:'nickname',
                     disabled:true
                 })
             ),
-            dom.td(
+            doe.td(
                 `
                     This field is optional, leave it blank if you do
                     not want to provide it.
                     Your nickname should be longer than 0 characters,
                     shorter than 16 characters.
                 `,
-                dom.br(),
-                view.span_status_nickname_validity=dom.span(),
+                doe.br(),
+                view.span_status_nickname_validity=doe.span(),
             )
         )
     }
     function changePasswordTr(){
-        return dom.tr(
-            dom.td({colSpan:2},
-                dom.label(
+        return doe.tr(
+            doe.td({colSpan:2},
+                doe.label(
                     view.input_ischangepassword=
-                        dom.input({type:'checkbox'}),
+                        doe.input({type:'checkbox'}),
                     ' Change password'
                 )
             ),
         )
     }
     function passwordTr(){
-        return dom.tr({className:'password'},
-            dom.td(
+        return doe.tr({className:'password'},
+            doe.td(
                 'Password',
-                dom.br(),
-                view.input_password=dom.input({
+                doe.br(),
+                view.input_password=doe.input({
                     className:'password',
                     type:'password'
                 })
             ),
-            dom.td()
+            doe.td()
         )
     }
     function confirmPasswordTr(){
-        return dom.tr({className:'confirmpassword'},
-            dom.td(
+        return doe.tr({className:'confirmpassword'},
+            doe.td(
                 'Confirm password',
-                dom.br(),
-                view.input_confirmpassword=dom.input({
+                doe.br(),
+                view.input_confirmpassword=doe.input({
                     className:'password',
                     type:'password',
                 })
             ),
-            dom.td(
-                view.span_status_confirmpassword=dom.span(),
+            doe.td(
+                view.span_status_confirmpassword=doe.span(),
             )
         )
     }
     function submitTr(){
-        return dom.tr(
-            dom.td({colSpan:2},
-                view.input_submit=dom.input('Submit',{type:'submit'})
+        return doe.tr(
+            doe.td({colSpan:2},
+                view.input_submit=doe.input('Submit',{type:'submit'})
             ),
         )
     }
@@ -167,10 +167,10 @@ var view = {get(){
         edituser=this,
         checker,
         view=new View,
-        node=dom.div({className:'edituser'},
-            dom.h1('Edit User'),
-            view.form=dom.form(
-                dom.table(
+        node=doe.div({className:'edituser'},
+            doe.h1('Edit User'),
+            view.form=doe.form(
+                doe.table(
                     usernameTr(),
                     nicknameTr(),
                     changePasswordTr(),
@@ -287,7 +287,7 @@ function Edituser(site){
     this._site.applyPlugins('edituser',this);
 }
 Object.defineProperty(Edituser.prototype,'view',view);
-Edituser.style=dom.style(style);
+Edituser.style=doe.style(style);
 
 let site=new Site;
 async function createEdituserView(){
@@ -298,6 +298,6 @@ site.on('userChange',()=>
     location='/'
 )
 ;(async()=>{
-    dom.head(Edituser.style);
-    dom.body(await createEdituserView());
+    doe.head(Edituser.style);
+    doe.body(await createEdituserView());
 })();

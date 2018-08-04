@@ -1,5 +1,5 @@
 import{EventEmmiter}from 'https://gitcdn.link/cdn/anliting/simple.js/3b5e122ded93bb9a5a7d5099ac645f1e1614a89b/src/simple.static.js'
-import{dom}from '/lib/core.static.js'
+import{doe}from '/lib/core.static.js'
 import Ui from './Register/Ui.js'
 import style from './Register/style.js'
 function Register(site){
@@ -21,8 +21,8 @@ Register.prototype._register=async function(username,password){
     })
 }
 function ExplanationUi(){
-    this.node=dom.div(n=>
-        dom.button('Explain the user system.',{onclick(e){
+    this.node=doe.div(n=>
+        doe.button('Explain the user system.',{onclick(e){
             n.removeChild(this)
             n.innerHTML=`<div style=padding-left:32px>
 <p>
@@ -51,5 +51,5 @@ Object.defineProperty(Register.prototype,'ui',{get(){
     ui.register=(u,p)=>this._register(u,p)
     return this._ui=ui
 }})
-Register.style=dom.style(style)
+Register.style=doe.style(style)
 export default Register

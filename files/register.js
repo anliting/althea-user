@@ -1,4 +1,4 @@
-import{Site,dom}from'/lib/core.static.js'
+import{Site,doe}from'/lib/core.static.js'
 import style from'./register/style.js'
 import Register from'./Register.js'
 let
@@ -8,18 +8,18 @@ register.on('register',async e=>{
     await site.login(e.username,e.password)
     location=''
 })
-dom.head(
-    dom.style(style),
+doe.head(
+    doe.style(style),
     Register.style
 )
-dom.body(
-    dom.div({className:'main'},
-        dom.h1('Register'),
-        dom.p(`This web page explains the user system of this
+doe.body(
+    doe.div({className:'main'},
+        doe.h1('Register'),
+        doe.p(`This web page explains the user system of this
             website and provides a interface for registering.
         `),
         register.explanationUi,
-        dom.p(`The registering process starts here. Just input the
+        doe.p(`The registering process starts here. Just input the
             username and password, and then submit.
         `),
         register.ui.node
