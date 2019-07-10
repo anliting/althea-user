@@ -1,5 +1,5 @@
-import calcContent from './user/calcContent'
-import register from './register'
+import calcContent from './user/calcContent.mjs'
+import register from './register.mjs'
 async function calcUserId(env){
     let username=env.analyze.request.parsedUrl.pathname.split('/')[2]
     if(username!=undefined)

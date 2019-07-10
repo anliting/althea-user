@@ -1,5 +1,5 @@
-import user from './server/user'
-import edituser from './server/edituser'
+import user from './server/user.mjs'
+import edituser from './server/edituser.mjs'
 export default althea=>{
     althea.addPagemodule('/edituser',edituser)
     althea.addPagemodule(env=>{
