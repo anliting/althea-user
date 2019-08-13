@@ -21,6 +21,12 @@ async function userPage(env,userId){
     }
     if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
+    let ua=env.library.userAgent
+    if(!ua.leOr(
+        ua.version.esModuleBase,
+        ua.parse(env.request.headers['user-agent'])
+    ))
+        return ua.notSupport(ua.version.esModuleBase)
     env.headers['content-type']='text/html;charset=utf-8'
     return{
         status:200,
